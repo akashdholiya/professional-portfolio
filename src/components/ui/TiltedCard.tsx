@@ -3,6 +3,7 @@
 import type { SpringOptions } from "framer-motion";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import NextImage from "next/image";
 
 interface TiltedCardProps {
   imageSrc: string;
@@ -96,14 +97,11 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <motion.img
+        <NextImage
           src={imageSrc}
           alt={altText}
-          className="absolute top-0 left-0 object-cover rounded-[15px] will-change-transform [transform:translateZ(0)]"
-          style={{
-            width: imageWidth,
-            height: imageHeight,
-          }}
+          fill
+          className="object-cover rounded-[15px] pointer-events-none"
         />
 
         {displayOverlayContent && overlayContent && (
