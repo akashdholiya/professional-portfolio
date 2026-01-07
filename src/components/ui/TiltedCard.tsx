@@ -101,7 +101,7 @@ export default function TiltedCard({
           src={imageSrc}
           alt={altText}
           fill
-          className="object-cover rounded-[15px] pointer-events-none"
+          className="object-cover rounded-[15px] pointer-events-none border-2 border-[#eeeeee] dark:border-[#fafafa]"
         />
 
         {displayOverlayContent && overlayContent && (
