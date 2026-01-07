@@ -65,15 +65,9 @@ export function ProjectList({ limit, showViewMore = false, layout = 'alternating
                 <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-3 leading-tight text-black dark:text-white transition-colors">
                   {project.title}
                 </h2>
-                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-4 leading-relaxed max-w-md transition-colors">
+                <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed max-w-md transition-colors">
                   {project.description}
                 </p>
-                <Link href={project.href} className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest hover:gap-4 transition-all duration-300 group-hover:text-gray-900 dark:group-hover:text-white border-b border-transparent group-hover:border-black dark:group-hover:border-white pb-1 text-black dark:text-gray-300">
-                  View Case Study
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
               </div>
             </motion.div>
           );
@@ -82,10 +76,8 @@ export function ProjectList({ limit, showViewMore = false, layout = 'alternating
 
       {showViewMore && (
         <div className="mt-10 md:mt-14 flex justify-center">
-          <Link 
-            href="/work" 
-            className="group relative inline-flex items-center gap-4 px-6 py-3.5 md:px-8 md:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full overflow-hidden transition-all hover:scale-105 shadow-xl"
-          >
+          <Link href="/work" 
+            className="group relative inline-flex items-center gap-4 px-6 py-3.5 md:px-8 md:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full overflow-hidden transition-all hover:scale-105 shadow-xl">
             <span className="relative z-10 text-xs md:text-sm font-bold uppercase tracking-widest">View More Work</span>
             <div className="w-6 h-6 md:w-8 md:h-8 bg-white dark:bg-black rounded-full flex items-center justify-center transition-transform group-hover:rotate-45">
               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

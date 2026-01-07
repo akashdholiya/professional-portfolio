@@ -118,7 +118,7 @@ export default function ContactPage() {
                   akashdholiya5570@gmail.com
                 </p>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors">
-                  +91 88661-1829
+                  +91 88661-11829
                 </p>
               </div>
             </div>
