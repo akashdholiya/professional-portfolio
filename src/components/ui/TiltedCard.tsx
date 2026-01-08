@@ -4,6 +4,7 @@ import type { SpringOptions } from "framer-motion";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import NextImage from "next/image";
+import ElectricBorder from "./ElectricBorder";
 
 interface TiltedCardProps {
   imageSrc: string;
@@ -97,12 +98,14 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <NextImage
-          src={imageSrc}
-          alt={altText}
-          fill
-          className="object-cover rounded-[15px] pointer-events-none border-2 border-[#eeeeee] dark:border-[#fafafa]"
-        />
+        <ElectricBorder className="h-full w-full" cornerRadius={15}>
+          <NextImage
+            src={imageSrc}
+            alt={altText}
+            fill
+            className="object-cover rounded-[13px] pointer-events-none"
+          />
+        </ElectricBorder>
 
         {displayOverlayContent && overlayContent && (
           <motion.div
