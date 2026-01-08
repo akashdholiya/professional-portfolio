@@ -4,6 +4,8 @@ import type { SpringOptions } from "framer-motion";
 import { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import NextImage from "next/image";
+import { cn } from "@/lib/utils";
+import ElectricBorder from "./ElectricBorder";
 
 interface TiltedCardProps {
   imageSrc: string;
@@ -19,6 +21,7 @@ interface TiltedCardProps {
   showTooltip?: boolean;
   overlayContent?: React.ReactNode;
   displayOverlayContent?: boolean;
+  className?: string;
 }
 
 const springDefaults: SpringOptions = {
@@ -41,8 +44,10 @@ export default function TiltedCard({
   showTooltip = true,
   overlayContent = null,
   displayOverlayContent = false,
+  className,
 }: TiltedCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -77,12 +82,12 @@ export default function TiltedCard({
 
   return (
     <figure
-      ref={ref}
-      className="relative w-full h-full [perspective:800px] flex flex-col items-center justify-center text-center"
-      style={{
-        height: containerHeight,
-        width: containerWidth,
-      }}
+       ref={ref}
+       className={cn("relative w-full h-full [perspective:800px] flex flex-col items-center justify-center text-center", className)}
+       style={{
+         height: containerHeight,
+         width: containerWidth,
+       }}
       onMouseMove={handleMouse}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -97,12 +102,20 @@ export default function TiltedCard({
           scale,
         }}
       >
-        <NextImage
-          src={imageSrc}
-          alt={altText}
-          fill
-          className="object-cover rounded-[15px] pointer-events-none border-2 border-[#eeeeee] dark:border-[#fafafa]"
-        />
+        <ElectricBorder className="h-full w-full" cornerRadius={15}>
+          {isLoading && (
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-gray-200 dark:bg-gray-800 animate-pulse rounded-[13px]">
+              <div className="w-10 h-10 border-4 border-gray-300 dark:border-gray-600 border-t-black dark:border-t-white rounded-full animate-spin"></div>
+            </div>
+          )}
+          <NextImage
+            src={imageSrc}
+            alt={altText}
+            fill
+            className={cn("object-cover rounded-[13px] pointer-events-none transition-opacity duration-300", isLoading ? "opacity-0" : "opacity-100")}
+            onLoad={() => setIsLoading(false)}
+          />
+        </ElectricBorder>
 
         {displayOverlayContent && overlayContent && (
           <motion.div

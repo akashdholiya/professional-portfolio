@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
+import { SmartButton } from "./ui/SmartButton";
 
 const navLinks = [
   { href: "/about", label: "About Me" },
@@ -66,13 +67,13 @@ export function Header() {
 
             <ThemeToggle />
 
-            <a
+            <SmartButton
               href="/AkashDholiyaCV.pdf"
               download
-              className="px-6 py-2.5 rounded-full border border-black dark:border-white bg-transparent hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-xs font-bold uppercase tracking-widest"
+              className="px-6 py-2.5 text-xs"
             >
               Download CV
-            </a>
+            </SmartButton>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -130,13 +131,13 @@ export function Header() {
                 <ThemeToggle />
               </div>
 
-              <a
+              <SmartButton
                 href="/AkashDholiyaCV.pdf"
                 download
-                className="mt-8 px-8 py-4 rounded-full bg-black dark:bg-white text-white dark:text-black text-sm font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+                className="mt-8 px-8 py-4 text-sm"
               >
                 Download CV
-              </a>
+              </SmartButton>
             </nav>
           </motion.div>
         )}
