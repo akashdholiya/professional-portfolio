@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import Experience from "@/components/Experience";
 
 export default function AboutPage() {
   return (
@@ -159,6 +160,9 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
+        {/* EXPERIENCE SECTION */}
+        <Experience />
+
         {/* DOWNLOAD CV CTA */}
         <motion.div
           className="flex justify-start md:justify-center pb-10"
@@ -167,7 +171,7 @@ export default function AboutPage() {
           viewport={{ once: true }}
         >
           <a
-            href="/AkashDholiyaCV.pdf"
+            href="/Akash-CV.pdf"
             download
             className="group relative inline-flex items-center gap-4 px-8 py-3.5 bg-black dark:bg-white text-white dark:text-black rounded-full overflow-hidden transition-all hover:scale-105 shadow-xl"
           >
