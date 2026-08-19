@@ -162,3 +162,71 @@ export const projects: Project[] = [
         image: "/fitmaker.png",
     },
 ];
+
+export interface Experience {
+    id: string;
+    role: string;
+    company: string;
+    location: string;
+    duration: string;
+    periodYear: string;
+    current: boolean;
+    responsibilities: string[];
+    technologies: string[];
+}
+
+export const experiences: Experience[] = [
+    {
+        id: "codimize",
+        role: "UI/UX Designer — Freelance",
+        company: "Codimize",
+        location: "Remote",
+        duration: "Feb 2026 — Present",
+        periodYear: "2026",
+        current: true,
+        responsibilities: [
+            "Design responsive web and mobile interfaces using Figma and modern UI principles.",
+            "Create wireframes, user flows, and high-fidelity prototypes for client projects.",
+            "Collaborate with developers to ensure pixel-perfect and responsive UI implementation.",
+            "Improve usability and user experience through design systems and component libraries.",
+        ],
+        technologies: [
+            "Figma",
+            "UI/UX Design",
+            "Wireframing",
+            "Prototyping",
+            "Design Systems",
+            "Responsive Design",
+        ],
+    },
+    {
+        id: "prosol-techline",
+        role: "UI Designer & Frontend Designer",
+        company: "Prosol Techline",
+        location: "Surat, Gujarat, India",
+        duration: "Aug 2022 — Jan 2026",
+        periodYear: "2022",
+        current: false,
+        responsibilities: [
+            "Designed and developed responsive web applications using React, Angular, and Next.js.",
+            "Reduced design-to-development handoff time by 30% using structured Figma components and Auto Layouts.",
+            "Improved UI consistency across 15+ application modules through scalable Design Systems.",
+            "Collaborated with cross-functional teams including developers, QA, and project managers in Agile workflows.",
+            "Mentored junior developers and improved project delivery timelines using Jira and ClickUp.",
+            "Optimized responsive layouts for desktop, tablet, and mobile devices.",
+        ],
+        technologies: [
+            "Figma",
+            "React.js",
+            "Angular",
+            "Next.js",
+            "HTML",
+            "CSS",
+            "SCSS",
+            "JavaScript",
+            "Jira",
+            "ClickUp",
+        ],
+    },
+];
+

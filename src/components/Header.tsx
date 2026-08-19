@@ -67,13 +67,13 @@ export function Header() {
 
             <ThemeToggle />
 
-            <SmartButton
-              href="/AkashDholiyaCV.pdf"
+            <a
+              href="/Akash-CV.pdf"
               download
-              className="px-6 py-2.5 text-xs"
+              className="px-6 py-2.5 rounded-full border border-black dark:border-white bg-transparent hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-xs font-bold uppercase tracking-widest"
             >
               Download CV
-            </SmartButton>
+            </a>
           </nav>
 
           {/* Mobile Menu Toggle */}
@@ -131,13 +131,13 @@ export function Header() {
                 <ThemeToggle />
               </div>
 
-              <SmartButton
-                href="/AkashDholiyaCV.pdf"
+              <a
+                href="/Akash-CV.pdf"
                 download
-                className="mt-8 px-8 py-4 text-sm"
+                className="mt-8 px-8 py-4 rounded-full bg-black dark:bg-white text-white dark:text-black text-sm font-bold uppercase tracking-widest hover:scale-105 transition-transform"
               >
                 Download CV
-              </SmartButton>
+              </a>
             </nav>
           </motion.div>
         )}
