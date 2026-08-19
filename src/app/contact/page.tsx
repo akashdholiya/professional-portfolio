@@ -9,6 +9,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { SmartButton } from "@/components/ui/SmartButton";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name is required." }),
@@ -42,10 +43,10 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      const SERVICE_ID = "service_iftiwzj";
-      const TEMPLATE_ID_ADMIN = "template_43b2syf";
-      const TEMPLATE_ID_USER = "template_fvgyt2j";
-      const PUBLIC_KEY = "au-n6sGG34U_NGtRo";
+      const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID || "";
+      const TEMPLATE_ID_ADMIN = process.env.NEXT_PUBLIC_TEMPLATE_ID_ADMIN || "";
+      const TEMPLATE_ID_USER = process.env.NEXT_PUBLIC_TEMPLATE_ID_USER || "";
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_PUBLIC_KEY || "";
 
       // Combine First and Last name for the email template
       const fullName = `${data.firstName} ${data.lastName}`;
@@ -59,7 +60,7 @@ export default function ContactPage() {
           email: data.email,
           phone: data.phone,
           message: data.message,
-        },
+        },  
         PUBLIC_KEY
       );
 
@@ -238,13 +239,13 @@ export default function ContactPage() {
               </div>
 
               <div className="flex justify-end pt-4">
-                <button
+                <SmartButton
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-10 py-3 border border-gray-600 dark:border-gray-400 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white transition-all duration-300 font-bold uppercase tracking-widest text-sm disabled:opacity-50 cursor-pointer"
+                  className="px-10 py-3 disabled:opacity-50"
                 >
                   {isSubmitting ? "Sending..." : "Submit"}
-                </button>
+                </SmartButton>
               </div>
 
               {/* Status Messages */}
