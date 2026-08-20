@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TiltedCard from "./ui/TiltedCard";
 import ScrollReveal from "./ui/ScrollReveal";
+import { SmartButton } from "./ui/SmartButton";
 import { motion } from "framer-motion";
 import { projects as defaultProjects, Project } from "@/lib/data";
 
@@ -48,8 +49,8 @@ export function ProjectList({
             <ScrollReveal
               key={index}
               wordAnimation={false}
-              enableBlur={true}
-              baseOpacity={0}
+              enableBlur={false}
+              baseOpacity={0.4}
             >
               <motion.div
                 className={`flex flex-col ${flexDirection} gap-6 ${
@@ -70,7 +71,7 @@ export function ProjectList({
                     imageSrc={project.image}
                     altText={project.title}
                     captionText={project.title}
-                    containerHeight="300px" // Adjust based on your design needs or make responsive if possible
+                    containerHeight={undefined}
                     containerWidth="100%"
                     imageHeight="100%"
                     imageWidth="100%"
@@ -80,6 +81,7 @@ export function ProjectList({
                     showTooltip={false}
                     displayOverlayContent={true}
                     overlayContent={null}
+                    className="h-[250px] sm:h-[300px] md:h-[400px] w-full"
                   />
                 </div>
 
@@ -111,10 +113,11 @@ export function ProjectList({
 
       {showViewMore && (
         <div className="mt-10 md:mt-14 flex justify-center">
-          <Link
+          <SmartButton
             href="/work"
-            className="group relative inline-flex items-center gap-4 px-6 py-3.5 md:px-8 md:py-4 bg-black dark:bg-white text-white dark:text-black rounded-full overflow-hidden transition-all hover:scale-105 shadow-xl"
+            className="px-6 py-3.5 md:px-8 md:py-4 bg-black dark:bg-white text-white dark:text-black hover:bg-white hover:text-black dark:hover:bg-black dark:hover:text-white"
           >
+            <span className="flex items-center gap-4">
             <span className="relative z-10 text-xs md:text-sm font-bold uppercase tracking-widest">
               View More Work
             </span>
@@ -136,7 +139,8 @@ export function ProjectList({
                 />
               </svg>
             </div>
-          </Link>
+            </span>
+          </SmartButton>
         </div>
       )}
     </section>

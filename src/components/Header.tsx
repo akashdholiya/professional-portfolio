@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
+import { SmartButton } from "./ui/SmartButton";
 
 const navLinks = [
   { href: "/about", label: "About Me" },

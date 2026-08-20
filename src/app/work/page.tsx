@@ -6,6 +6,7 @@ import { projects } from "@/lib/data";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmartButton } from "@/components/ui/SmartButton";
 
 const tabs = ["All", "Figma", "Angular", "React"];
 
@@ -37,19 +38,19 @@ export default function AllProjects() {
         </div>
 
         {/* Tabs */}
-        <div className="flex justify-center flex-wrap gap-4 px-4">
+        <div className="flex justify-center flex-wrap gap-1.5 md:gap-4 px-4">
           {tabs.map((tab) => (
-            <button
+            <SmartButton
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-6 py-2.5 sm:px-8 sm:py-3 rounded-full text-xs sm:text-sm font-bold uppercase tracking-widest transition-all duration-300 ${
+              className={`px-6 py-2.5 sm:px-8 sm:py-3 text-xs sm:text-sm ${
                 activeTab === tab
-                  ? "bg-black dark:bg-white text-white dark:text-black scale-105"
-                  : "bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
+                  ? "bg-black dark:bg-white text-white dark:text-black border-black dark:border-white"
+                  : "bg-gray-100 dark:bg-gray-800 border-transparent text-gray-500 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
               }`}
             >
               {tab}
-            </button>
+            </SmartButton>
           ))}
         </div>
 
