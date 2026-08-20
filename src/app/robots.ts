@@ -7,8 +7,7 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: '/private/',
         },
-        sitemap: 'https://akashdholiya.com/sitemap.xml', // Replace with actual domain
+        sitemap: 'https://akash-dholiya-protfolio.web.app/sitemap.xml',
     }
 }

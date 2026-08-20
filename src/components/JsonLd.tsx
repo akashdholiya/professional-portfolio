@@ -3,24 +3,39 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Akash Dholiya",
-    "url": "https://akashdholiya.com", // Replace with your actual domain
-    "image": "https://akashdholiya.com/logo.jpg", // Replace with your actual logo URL
-    "sameAs": [
-      "https://www.linkedin.com/in/akashdholiya", // Add your actual LinkedIn URL
-      "https://github.com/akashdholiya", // Add your actual GitHub URL
-      "https://twitter.com/akashdholiya" // Add your actual Twitter URL
-    ],
-    "jobTitle": "UX/UI & Web Designer",
+    "alternateName": "Akash",
+    "url": "https://akash-dholiya-protfolio.web.app",
+    "image": "https://akash-dholiya-protfolio.web.app/Akash.jpg",
+    "jobTitle": "UI/UX & Web Designer",
     "worksFor": {
       "@type": "Organization",
       "name": "Freelance"
     },
-    "description": "Creative UX/UI & Web Designer based in Surat, India."
+    "description": "Portfolio of Akash Dholiya — UI/UX & Web Designer specializing in Figma, web design and digital experiences.",
+    "email": "mailto:akashdholiya5570@gmail.com",
+    "telephone": "+918866111829",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Surat",
+      "addressRegion": "Gujarat",
+      "addressCountry": "India"
+    },
+    "knowsAbout": [
+      "UI/UX Design",
+      "Figma",
+      "Web Design",
+      "Frontend Development",
+      "React.js",
+      "Next.js",
+      "Angular",
+      "Design Systems",
+      "Responsive Web Design"
+    ]
   }
 
   return (
     <section>
-      {/* Add JSON-LD to your page */}
+      {/* JSON-LD Schema for Google Search Engine */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
