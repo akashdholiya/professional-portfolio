@@ -65,6 +65,15 @@ export function Header() {
               Contact
             </Link>
 
+            <a
+              href="https://www.figma.com/@akashdholiya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-bold uppercase tracking-widest transition-colors text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+            >
+              Figma Community
+            </a>
+
             <ThemeToggle />
 
             <a
@@ -126,6 +135,15 @@ export function Header() {
               >
                 Contact
               </Link>
+              <a
+                href="https://www.figma.com/@akashdholiya"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                className="text-3xl font-display font-bold text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+              >
+                Figma Community
+              </a>
               
               <div className="scale-150">
                 <ThemeToggle />
