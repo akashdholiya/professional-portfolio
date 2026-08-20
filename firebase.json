@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "akash-dholiya-protfolio",
     "public": "out",
     "ignore": [
       "firebase.json",
