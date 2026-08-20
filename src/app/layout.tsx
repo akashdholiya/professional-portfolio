@@ -19,25 +19,39 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Akash Dholiya | UX/UI & Web Designer",
+    default: "Akash Dholiya | UI/UX & Web Designer",
     template: "%s | Akash Dholiya",
   },
-  description: "Portfolio of Akash Dholiya, a creative UX/UI & Web Designer based in Surat, India. Specializing in creating stunning digital experiences.",
+  description: "Akash Dholiya is a UI/UX & Web Designer from Surat, Gujarat, specializing in Figma, web design, responsive interfaces, design systems and digital experiences.",
   keywords: [
     "Akash Dholiya",
     "Akash Dholiya Portfolio",
-    "UX/UI Designer",
+    "Akash Dholiya UI UX Designer",
+    "UI UX Designer in Surat",
+    "Web Designer in Surat",
+    "Figma Designer",
+    "UI UX Portfolio",
     "Web Designer",
-    "Frontend Developer",
+    "Product Designer",
+    "UX/UI Designer",
     "Surat",
     "Gujarat",
     "India",
     "Next.js Developer",
     "React Developer",
   ],
-  authors: [{ name: "Akash Dholiya" }],
+  authors: [
+    {
+      name: "Akash Dholiya",
+      url: "https://akash-dholiya-protfolio.web.app",
+    },
+  ],
   creator: "Akash Dholiya",
-  metadataBase: new URL("https://akashdholiya.com"), // Change this to your actual domain
+  publisher: "Akash Dholiya",
+  alternates: {
+    canonical: "https://akash-dholiya-protfolio.web.app",
+  },
+  metadataBase: new URL("https://akash-dholiya-protfolio.web.app"),
   manifest: "/manifest.json",
   icons: {
     icon: "/icon.jpg",
@@ -46,26 +60,34 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Akash Dholiya | UX/UI & Web Designer",
-    description: "Portfolio of Akash Dholiya, combining creativity with technical expertise to build responsive and engaging web applications.",
-    url: "https://akashdholiya.com",
+    description: "Portfolio of Akash Dholiya — UI/UX & Web Designer specializing in Figma, web design and digital experiences.",
+    url: "https://akash-dholiya-protfolio.web.app",
     siteName: "Akash Dholiya Portfolio",
+    type: "website",
+    locale: "en_IN",
     images: [
       {
         url: "/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Akash Dholiya Portfolio",
+        alt: "Akash Dholiya — UI/UX & Web Designer",
       },
     ],
-    locale: "en_US",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "Akash Dholiya | UX/UI & Web Designer",
-    description: "Creative UX/UI & Web Designer based in Surat, India.",
+    description: "Portfolio of Akash Dholiya — UI/UX & Web Designer.",
     images: ["/logo.jpg"],
     creator: "@akashdholiya",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
