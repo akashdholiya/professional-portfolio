@@ -35,7 +35,7 @@ export function Hero() {
           </div>
           
           <motion.div 
-            className="flex items-center gap-6"
+            className="flex flex-wrap items-center gap-6 sm:gap-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1, ease: "easeOut" }}
@@ -55,6 +55,29 @@ export function Hero() {
               </div>
               <span className="uppercase tracking-widest text-sm font-medium">View Works</span>
             </Link>
+
+            <a
+              href="https://www.figma.com/@akashdholiya"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center gap-4 text-black dark:text-white"
+            >
+              <div className="w-16 h-16 border border-black/40 dark:border-white/40 group-hover:border-black dark:group-hover:border-white rounded-full flex items-center justify-center transition-all group-hover:scale-110 duration-300">
+                <svg 
+                  width="22" 
+                  height="22" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 text-black dark:text-white"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <span className="uppercase tracking-widest text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-black dark:group-hover:text-white transition-colors">
+                View My Figma
+              </span>
+            </a>
           </motion.div>
         </div>
       </div>

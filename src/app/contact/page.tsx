@@ -127,6 +127,7 @@ export default function ContactPage() {
               <Link
                 href="mailto:akashdholiya5570@gmail.com"
                 className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                aria-label="Email"
               >
                 <svg
                   width="18"
@@ -143,6 +144,28 @@ export default function ContactPage() {
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
               </Link>
+              <a
+                href="https://www.figma.com/@akashdholiya"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
+                aria-label="Figma Community"
+                title="Figma Community"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 38 57"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
+                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
+                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
+                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
+                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
+                </svg>
+              </a>
             </div>
           </motion.div>
         </div>

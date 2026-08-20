@@ -4,7 +4,15 @@ export function Footer() {
       <div className="text-center md:text-left">
         &copy; {new Date().getFullYear()} Akash Dholiya. All rights reserved.
       </div>
-      <div className="flex gap-8">
+      <div className="flex items-center gap-8">
+        <a
+          href="https://www.figma.com/@akashdholiya"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="transition-colors uppercase tracking-widest text-xs font-bold hover:text-black dark:hover:text-white"
+        >
+          Figma Community
+        </a>
         <a
           href="mailto:akashdholiya5570@gmail.com"
           className="transition-colors uppercase tracking-widest text-xs font-bold hover:text-black dark:hover:text-white"
