@@ -36,7 +36,7 @@
   --foreground-muted: #70798A;
   --border: rgba(255, 255, 255, 0.08);
   --border-subtle: rgba(255, 255, 255, 0.04);
-  --border-hover: rgba(255, 255, 255, 0.16);
+  --border-hover: rgba(255, 255, 255, 0.14);
   --accent: #7C3AED;
   --accent-hover: #8B5CF6;
   --accent-subtle: rgba(124, 58, 237, 0.15);
@@ -66,18 +66,18 @@ h6,
   font-family: var(--font-syne), sans-serif;
 }
 
-/* Custom Design System Typography Helpers */
+/* Standardized Typography Scale */
 .type-hero {
   font-family: var(--font-syne), sans-serif;
-  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   font-weight: 700;
-  line-height: 1.06;
-  letter-spacing: -0.035em;
+  line-height: 1.04;
+  letter-spacing: -0.04em;
 }
 
 .type-h1 {
   font-family: var(--font-syne), sans-serif;
-  font-size: clamp(2rem, 4vw, 3.75rem);
+  font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.03em;
@@ -93,10 +93,10 @@ h6,
 
 .type-h3 {
   font-family: var(--font-syne), sans-serif;
-  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-size: clamp(1.25rem, 2vw, 2rem);
   font-weight: 600;
   line-height: 1.25;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.02em;
 }
 
 .type-body-lg {

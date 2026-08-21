@@ -45,9 +45,9 @@ export default function WorkPage() {
     <div className="min-h-screen bg-white dark:bg-[#0B0F1A] text-neutral-900 dark:text-slate-100 font-sans selection:bg-violet-500 selection:text-white transition-colors duration-300">
       <Header />
 
-      <main className="pt-12 md:pt-16">
+      <main className="pt-28 md:pt-36">
         {/* Header with Spotlight */}
-        <section className="relative py-12 md:py-20 mb-12 md:mb-16 text-center overflow-hidden">
+        <section className="relative mb-12 md:mb-16 text-center overflow-hidden">
           <Spotlight className="-top-30 left-1/4" fill="#7C3AED" />
           <GridPattern showDots={true} />
 
@@ -75,10 +75,11 @@ export default function WorkPage() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${activeTab === tab
-                  ? "bg-neutral-900 dark:bg-[#1A2233] text-white shadow-xs"
-                  : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
-                  }`}
+                className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-200 ${
+                  activeTab === tab
+                    ? "bg-neutral-900 dark:bg-[#1A2233] text-white shadow-xs"
+                    : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
+                }`}
               >
                 {tab}
               </button>

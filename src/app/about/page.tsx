@@ -19,9 +19,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-white dark:bg-[#0B0F1A] text-neutral-900 dark:text-slate-100 font-sans selection:bg-violet-500 selection:text-white transition-colors duration-300">
       <Header />
 
-      <main className="pt-12 md:pt-16">
+      <main className="pt-28 md:pt-36">
         {/* HERO SECTION */}
-        <section className="relative py-6 md:py-12 mb-16 md:mb-24 overflow-hidden">
+        <section className="relative py-8 md:py-16 mb-16 md:mb-24 overflow-hidden">
           <Spotlight className="-top-30 left-10 md:left-40" fill="#7C3AED" />
           <GridPattern showDots={true} />
 
