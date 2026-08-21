@@ -7,8 +7,11 @@ import * as z from "zod";
 import emailjs from "@emailjs/browser";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { GridPattern } from "@/components/ui/GridPattern";
+import { Container } from "@/components/ui/Container";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { Mail, Phone, MapPin, Send, Figma, CheckCircle2, AlertCircle, Sparkles } from "lucide-react";
 
 const formSchema = z.object({
   firstName: z.string().min(2, { message: "First name is required." }),
@@ -24,9 +27,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<
-    "idle" | "success" | "error"
-  >("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   const {
     register,
@@ -42,12 +43,11 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      const SERVICE_ID = "service_iftiwzj";
-      const TEMPLATE_ID_ADMIN = "template_43b2syf";
-      const TEMPLATE_ID_USER = "template_fvgyt2j";
-      const PUBLIC_KEY = "au-n6sGG34U_NGtRo";
+      const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID || "";
+      const TEMPLATE_ID_ADMIN = process.env.NEXT_PUBLIC_TEMPLATE_ID_ADMIN || "";
+      const TEMPLATE_ID_USER = process.env.NEXT_PUBLIC_TEMPLATE_ID_USER || "";
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_PUBLIC_KEY || "";
 
-      // Combine First and Last name for the email template
       const fullName = `${data.firstName} ${data.lastName}`;
 
       // 1. Send email to Admin
@@ -59,7 +59,7 @@ export default function ContactPage() {
           email: data.email,
           phone: data.phone,
           message: data.message,
-        },
+        },  
         PUBLIC_KEY
       );
 
@@ -85,205 +85,225 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-[#0B0F1A] text-neutral-900 dark:text-slate-100 font-sans selection:bg-violet-500 selection:text-white transition-colors duration-300">
       <Header />
 
-      <main className="pt-32 pb-20 px-6 sm:px-12 md:px-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-12 md:gap-20">
-        {/* LEFT COLUMN: Contact Info */}
-        <div className="w-full md:w-1/2 pt-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h4 className="text-xs font-bold uppercase tracking-widest text-gray-500 dark:text-gray-400 mb-4 transition-colors">
-              Contact
-            </h4>
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-bold mb-16">
-              Get In Touch
-            </h1>
+      <main className="pt-28 md:pt-36 pb-20 relative overflow-hidden">
+        <Spotlight className="-top-30 left-10 md:left-40" fill="#7C3AED" />
+        <GridPattern showDots={true} />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 mb-16">
+        <Container className="relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Column: Direct Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="lg:col-span-5 space-y-8"
+            >
               <div>
-                <h3 className="text-lg font-bold mb-2">Location</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors">
-                  Surat
-                  <br />
-                  Gujarat, India
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 dark:bg-violet-500/15 border border-violet-500/20 text-xs font-mono font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400 mb-4">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Get In Touch</span>
+                </div>
+                <h1 className="type-h1 text-neutral-900 dark:text-slate-50 leading-tight">
+                  Let's Discuss Your Next Product
+                </h1>
+                <p className="type-body text-neutral-600 dark:text-slate-300 mt-4 leading-relaxed">
+                  Whether you have an upcoming project, freelance inquiry, or full-time opportunity, feel free to reach out.
                 </p>
               </div>
-              <div>
-                <h3 className="text-lg font-bold mb-2">Contact</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-1 transition-colors">
-                  akashdholiya5570@gmail.com
-                </p>
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed transition-colors">
-                  +91 88661-11829
-                </p>
+
+              {/* Direct channels */}
+              <div className="space-y-4 pt-2">
+                <div className="p-5 rounded-[20px] bg-neutral-50 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-violet-500/10 text-violet-600 dark:text-violet-400 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-400 dark:text-slate-400">
+                      Email
+                    </div>
+                    <a
+                      href="mailto:akashdholiya5570@gmail.com"
+                      className="font-medium text-sm sm:text-base text-neutral-900 dark:text-white hover:text-violet-500 transition-colors"
+                    >
+                      akashdholiya5570@gmail.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-[20px] bg-neutral-50 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-400 dark:text-slate-400">
+                      Phone
+                    </div>
+                    <a
+                      href="tel:+918866111829"
+                      className="font-medium text-sm sm:text-base text-neutral-900 dark:text-white hover:text-purple-500 transition-colors"
+                    >
+                      +91 88661-11829
+                    </a>
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-[20px] bg-neutral-50 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <div className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-400 dark:text-slate-400">
+                      Location
+                    </div>
+                    <div className="font-medium text-sm sm:text-base text-neutral-900 dark:text-white">
+                      Surat, Gujarat, India
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div className="flex gap-4">
-              <Link
-                href="mailto:akashdholiya5570@gmail.com"
-                className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
-                aria-label="Email"
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  xmlns="http://www.w3.org/2000/svg"
+              {/* Social Links */}
+              <div className="pt-2">
+                <a
+                  href="https://www.figma.com/@akashdholiya"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-100 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] text-xs font-bold uppercase tracking-wider text-neutral-800 dark:text-slate-200 hover:border-violet-500 transition-colors"
                 >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </Link>
-              <a
-                href="https://www.figma.com/@akashdholiya"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 flex items-center justify-center hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all"
-                aria-label="Figma Community"
-                title="Figma Community"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 38 57"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M19 28.5C19 23.2533 23.2533 19 28.5 19C33.7467 19 38 23.2533 38 28.5C38 33.7467 33.7467 38 28.5 38C23.2533 38 19 33.7467 19 28.5Z" />
-                  <path d="M0 47.5C0 42.2533 4.25329 38 9.5 38H19V47.5C19 52.7467 14.7467 57 9.5 57C4.25329 57 0 52.7467 0 47.5Z" />
-                  <path d="M19 0V19H28.5C33.7467 19 38 14.7467 38 9.5C38 4.25329 33.7467 0 28.5 0H19Z" />
-                  <path d="M0 9.5C0 14.7467 4.25329 19 9.5 19H19V0H9.5C4.25329 0 0 4.25329 0 9.5Z" />
-                  <path d="M0 28.5C0 33.7467 4.25329 38 9.5 38H19V19H9.5C4.25329 19 0 23.2533 0 28.5Z" />
-                </svg>
-              </a>
-            </div>
-          </motion.div>
-        </div>
+                  <Figma className="w-4 h-4 text-violet-400" />
+                  <span>Follow on Figma Community</span>
+                </a>
+              </div>
+            </motion.div>
 
-        {/* RIGHT COLUMN: Form */}
-        <div className="w-full md:w-1/2 pt-10 md:pl-12 border-l-0 md:border-l border-gray-100 dark:border-gray-800 transition-colors">
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                {/* First Name */}
-                <div className="relative">
-                  <input
-                    {...register("firstName")}
-                    type="text"
-                    id="firstName"
-                    placeholder="First Name"
-                    className="w-full pb-4 bg-transparent border-b border-gray-300 dark:border-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+            {/* Right Column: Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="lg:col-span-7 p-8 sm:p-10 rounded-[24px] bg-neutral-50/90 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] backdrop-blur-xl shadow-xl"
+            >
+              <h3 className="font-display text-2xl font-bold text-neutral-900 dark:text-white mb-6">
+                Send a Message
+              </h3>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* First Name */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                      First Name
+                    </label>
+                    <input
+                      {...register("firstName")}
+                      type="text"
+                      placeholder="John"
+                      className="w-full px-4 py-3 rounded-[12px] bg-white dark:bg-[#0B0F1A] border border-black/[0.08] dark:border-white/[0.10] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
+                    />
+                    {errors.firstName && (
+                      <p className="text-red-500 text-xs font-medium">{errors.firstName.message}</p>
+                    )}
+                  </div>
+
+                  {/* Last Name */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                      Last Name
+                    </label>
+                    <input
+                      {...register("lastName")}
+                      type="text"
+                      placeholder="Doe"
+                      className="w-full px-4 py-3 rounded-[12px] bg-white dark:bg-[#0B0F1A] border border-black/[0.08] dark:border-white/[0.10] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
+                    />
+                    {errors.lastName && (
+                      <p className="text-red-500 text-xs font-medium">{errors.lastName.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {/* Email */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                      Email Address
+                    </label>
+                    <input
+                      {...register("email")}
+                      type="email"
+                      placeholder="john@example.com"
+                      className="w-full px-4 py-3 rounded-[12px] bg-white dark:bg-[#0B0F1A] border border-black/[0.08] dark:border-white/[0.10] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
+                    />
+                    {errors.email && (
+                      <p className="text-red-500 text-xs font-medium">{errors.email.message}</p>
+                    )}
+                  </div>
+
+                  {/* Phone */}
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                      Phone Number
+                    </label>
+                    <input
+                      {...register("phone")}
+                      type="tel"
+                      placeholder="+1 (555) 000-0000"
+                      className="w-full px-4 py-3 rounded-[12px] bg-white dark:bg-[#0B0F1A] border border-black/[0.08] dark:border-white/[0.10] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
+                    />
+                    {errors.phone && (
+                      <p className="text-red-500 text-xs font-medium">{errors.phone.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono font-semibold uppercase tracking-wider text-neutral-500 dark:text-slate-400">
+                    Project Details / Message
+                  </label>
+                  <textarea
+                    {...register("message")}
+                    rows={4}
+                    placeholder="Tell me about your project, timeline, and goals..."
+                    className="w-full px-4 py-3 rounded-[12px] bg-white dark:bg-[#0B0F1A] border border-black/[0.08] dark:border-white/[0.10] text-neutral-900 dark:text-white placeholder-neutral-400 focus:outline-none focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm resize-none"
                   />
-                  {errors.firstName && (
-                    <p className="text-red-500 text-xs mt-2 absolute">
-                      {errors.firstName.message}
-                    </p>
+                  {errors.message && (
+                    <p className="text-red-500 text-xs font-medium">{errors.message.message}</p>
                   )}
                 </div>
 
-                {/* Last Name */}
-                <div className="relative">
-                  <input
-                    {...register("lastName")}
-                    type="text"
-                    id="lastName"
-                    placeholder="Last Name"
-                    className="w-full pb-4 bg-transparent border-b border-gray-300 dark:border-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
-                  />
-                  {errors.lastName && (
-                    <p className="text-red-500 text-xs mt-2 absolute">
-                      {errors.lastName.message}
-                    </p>
-                  )}
+                {/* Submit Button */}
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold uppercase tracking-widest hover:scale-[1.01] active:scale-[0.99] transition-all disabled:opacity-50 cursor-pointer shadow-lg"
+                  >
+                    <Send className="w-4 h-4" />
+                    <span>{isSubmitting ? "Sending Message..." : "Submit Message"}</span>
+                  </button>
                 </div>
-              </div>
 
-              {/* Email */}
-              <div className="relative">
-                <input
-                  {...register("email")}
-                  type="email"
-                  id="email"
-                  placeholder="Email"
-                  className="w-full pb-4 bg-transparent border-b border-gray-300 dark:border-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
-                />
-                {errors.email && (
-                  <p className="text-red-500 text-xs mt-2 absolute">
-                    {errors.email.message}
-                  </p>
+                {/* Status Banners */}
+                {submitStatus === "success" && (
+                  <div className="p-4 rounded-[12px] bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex items-center gap-3 text-sm font-medium">
+                    <CheckCircle2 className="w-5 h-5 shrink-0" />
+                    <span>Thank you! Your message has been sent successfully. I will get back to you shortly.</span>
+                  </div>
                 )}
-              </div>
-
-              {/* Phone */}
-              <div className="relative">
-                <input
-                  {...register("phone")}
-                  type="tel"
-                  id="phone"
-                  placeholder="Phone Number"
-                  className="w-full pb-4 bg-transparent border-b border-gray-300 dark:border-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
-                />
-                {errors.phone && (
-                  <p className="text-red-500 text-xs mt-2 absolute">
-                    {errors.phone.message}
-                  </p>
+                {submitStatus === "error" && (
+                  <div className="p-4 rounded-[12px] bg-red-500/10 border border-red-500/30 text-red-600 dark:text-red-400 flex items-center gap-3 text-sm font-medium">
+                    <AlertCircle className="w-5 h-5 shrink-0" />
+                    <span>Failed to send. Please try again or reach out directly at akashdholiya5570@gmail.com</span>
+                  </div>
                 )}
-              </div>
-
-              {/* Message */}
-              <div className="relative">
-                <textarea
-                  {...register("message")}
-                  id="message"
-                  rows={3}
-                  placeholder="Message"
-                  className="w-full pb-4 bg-transparent border-b border-gray-300 dark:border-gray-700 text-black dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
-                />
-                {errors.message && (
-                  <p className="text-red-500 text-xs mt-2 absolute">
-                    {errors.message.message}
-                  </p>
-                )}
-              </div>
-
-              <div className="flex justify-end pt-4">
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="px-10 py-3 border border-gray-600 dark:border-gray-400 text-black dark:text-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black hover:border-black dark:hover:border-white transition-all duration-300 font-bold uppercase tracking-widest text-sm disabled:opacity-50 cursor-pointer"
-                >
-                  {isSubmitting ? "Sending..." : "Submit"}
-                </button>
-              </div>
-
-              {/* Status Messages */}
-              {submitStatus === "success" && (
-                <div className="text-green-600 dark:text-green-400 text-sm font-medium">
-                  Message sent successfully!
-                </div>
-              )}
-              {submitStatus === "error" && (
-                <div className="text-red-600 dark:text-red-400 text-sm font-medium">
-                  Failed to send. Please try again.
-                </div>
-              )}
-            </form>
-          </motion.div>
-        </div>
+              </form>
+            </motion.div>
+          </div>
+        </Container>
       </main>
 
       <Footer />

@@ -6,15 +6,28 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ThemeToggle } from "./ThemeToggle";
+import { ArrowUpRight, Menu, X, FileText } from "lucide-react";
 
 const navLinks = [
-  { href: "/about", label: "About Me" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
   { href: "/work", label: "Work" },
+  { href: "/about#experience", label: "Experience" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -23,54 +36,82 @@ export function Header() {
     } else {
       document.body.style.overflow = "unset";
     }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
   }, [isOpen]);
 
   return (
     <>
-      <header className="max-w-7xl mx-auto fixed top-2 left-0 right-0 z-50 px-6 py-4 bg-white/30 dark:bg-black/30 backdrop-blur-lg border-b border-white/20 dark:border-white/10 shadow-sm transition-all duration-300 rounded-4xl text-black dark:text-white">
-        <div className="w-full mx-auto flex justify-between items-center">
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 sm:px-10 md:px-16 lg:px-20 py-3.5 sm:py-4 ${
+          scrolled
+            ? "bg-white/85 dark:bg-[#0B0F1A]/85 backdrop-blur-xl border-b border-black/[0.06] dark:border-white/[0.08] shadow-sm dark:shadow-2xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="relative z-50">
-            <Image
-              src="/logo.jpg"
-              alt="Logo"
-              width={45}
-              height={45}
-              className="rounded-full invert dark:invert-0 hover:scale-105 transition-transform"
-            />
+          <Link
+            href="/"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 rounded-full"
+            aria-label="Akash Dholiya Home"
+          >
+            <div className="relative w-10 h-10 rounded-full overflow-hidden border border-black/[0.08] dark:border-white/[0.10] shadow-xs group-hover:scale-105 transition-transform duration-300">
+              <Image
+                src="/logo.jpg"
+                alt="Akash Dholiya Logo"
+                fill
+                className="object-cover invert dark:invert-0"
+              />
+            </div>
+            <div className="hidden sm:flex flex-col">
+              <span className="font-display font-bold text-sm text-neutral-900 dark:text-slate-100 tracking-tight">
+                Akash Dholiya
+              </span>
+              <span className="text-[11px] font-mono text-neutral-500 dark:text-slate-400">
+                UI/UX &amp; Web Designer
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                  pathname === link.href ? "text-black dark:text-white" : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-            <Link
-              href="/contact"
-              className={`text-sm font-bold uppercase tracking-widest transition-colors ${
-                pathname === "/contact"
-                  ? "text-black dark:text-white"
-                  : "text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
-              }`}
-            >
-              Contact
-            </Link>
+          <nav
+            className="hidden md:flex items-center gap-1 lg:gap-1.5 px-3 py-1.5 rounded-full bg-neutral-100/90 dark:bg-[#151B2A]/90 backdrop-blur-md border border-black/[0.06] dark:border-white/[0.08] shadow-xs"
+            aria-label="Main Navigation"
+          >
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href.split("#")[0]);
 
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-4 py-1.5 text-xs font-semibold uppercase tracking-wider rounded-full transition-all duration-200 ${
+                    isActive
+                      ? "text-white bg-neutral-900 dark:bg-[#1A2233] dark:text-white shadow-xs"
+                      : "text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Desktop Actions */}
+          <div className="hidden md:flex items-center gap-3">
             <a
               href="https://www.figma.com/@akashdholiya"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-bold uppercase tracking-widest transition-colors text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white"
+              className="flex items-center gap-1 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
             >
-              Figma Community
+              <span>Figma</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </a>
 
             <ThemeToggle />
@@ -78,31 +119,24 @@ export function Header() {
             <a
               href="/Akash-CV.pdf"
               download
-              className="px-6 py-2.5 rounded-full border border-black dark:border-white bg-transparent hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-all duration-300 text-xs font-bold uppercase tracking-widest"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neutral-900 dark:border-white/20 bg-neutral-900 dark:bg-[#151B2A] text-white hover:bg-neutral-800 dark:hover:bg-[#1A2233] transition-all duration-300 text-xs font-bold uppercase tracking-wider shadow-sm"
             >
-              Download CV
+              <FileText className="w-3.5 h-3.5" />
+              <span>Resume</span>
             </a>
-          </nav>
+          </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden relative z-50 w-10 h-10 flex flex-col justify-center items-center gap-1.5 group"
-            aria-label="Toggle Menu"
-          >
-            <motion.span
-              animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 8 : 0 }}
-              className="w-8 h-0.5 bg-black dark:bg-white block transition-colors"
-            />
-            <motion.span
-              animate={{ opacity: isOpen ? 0 : 1 }}
-              className="w-8 h-0.5 bg-black dark:bg-white block transition-colors"
-            />
-            <motion.span
-              animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? -8 : 0 }}
-              className="w-8 h-0.5 bg-black dark:bg-white block transition-colors"
-            />
-          </button>
+          {/* Mobile Menu Actions */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-full border border-neutral-200 dark:border-slate-800 bg-white dark:bg-[#151B2A] text-neutral-900 dark:text-white hover:bg-neutral-100 dark:hover:bg-[#1A2233] transition-colors"
+              aria-label={isOpen ? "Close Menu" : "Open Menu"}
+            >
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
       </header>
 
@@ -110,55 +144,54 @@ export function Header() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white dark:bg-black flex flex-col items-center justify-center md:hidden"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-white/95 dark:bg-[#0B0F1A]/95 backdrop-blur-2xl flex flex-col justify-between pt-24 pb-12 px-8 md:hidden"
           >
-            <nav className="flex flex-col items-center gap-10">
+            <nav className="flex flex-col gap-6 items-start">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="text-3xl font-display font-bold text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                  className="text-2xl sm:text-3xl font-display font-bold text-neutral-900 dark:text-slate-100 hover:text-violet-500 transition-colors"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Link
-                href="/contact"
-                onClick={() => setIsOpen(false)}
-                className="text-3xl font-display font-bold text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
-              >
-                Contact
-              </Link>
+
               <a
                 href="https://www.figma.com/@akashdholiya"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
-                className="text-3xl font-display font-bold text-black dark:text-white hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
+                className="flex items-center gap-2 text-2xl sm:text-3xl font-display font-bold text-neutral-600 dark:text-slate-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
               >
-                Figma Community
+                <span>Figma Community</span>
+                <ArrowUpRight className="w-5 h-5" />
               </a>
-              
-              <div className="scale-150">
-                <ThemeToggle />
-              </div>
+            </nav>
 
+            <div className="flex flex-col gap-4 pt-8 border-t border-neutral-200 dark:border-slate-800">
               <a
                 href="/Akash-CV.pdf"
                 download
-                className="mt-8 px-8 py-4 rounded-full bg-black dark:bg-white text-white dark:text-black text-sm font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+                onClick={() => setIsOpen(false)}
+                className="w-full text-center py-3.5 rounded-full bg-neutral-900 dark:bg-violet-600 text-white text-xs font-bold uppercase tracking-widest shadow-lg hover:bg-neutral-800 dark:hover:bg-violet-700 transition-colors"
               >
-                Download CV
+                Download CV / Resume
               </a>
-            </nav>
+              <div className="text-center text-xs text-neutral-500 dark:text-slate-400 font-mono">
+                Surat, Gujarat, India • akashdholiya5570@gmail.com
+              </div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
     </>
   );
 }
+
+export default Header;

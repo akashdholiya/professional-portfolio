@@ -3,6 +3,7 @@ import { Syne, Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import JsonLd from "@/components/JsonLd";
+import { CustomCursor } from "@/components/ui/CustomCursor";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -97,9 +98,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      {/* Root Layout */}
       <body
         className={`${syne.variable} ${inter.variable} antialiased`}
       >
+        <CustomCursor />
         <JsonLd />
         <ThemeProvider
           attribute="class"

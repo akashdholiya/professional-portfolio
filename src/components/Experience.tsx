@@ -1,53 +1,60 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 import { experiences } from "@/lib/data";
 import { Timeline, TimelineEntry } from "@/components/ui/timeline";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Badge } from "@/components/ui/Badge";
+import { Briefcase, Building2, MapPin, CheckCircle2 } from "lucide-react";
 
 export function Experience() {
   const timelineData: TimelineEntry[] = experiences.map((exp) => ({
     title: exp.duration,
     content: (
-      <div className="py-2 group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors p-4 -mx-4 rounded-xl border border-transparent hover:border-gray-100 dark:hover:border-gray-800">
-        {/* Header: Role, Company, Location & Duration */}
-        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+      <div className="p-6 md:p-8 rounded-[20px] bg-white dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] shadow-sm hover:border-black/[0.16] dark:hover:border-white/[0.16] transition-all duration-300">
+        {/* Role & Company Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-4 border-b border-black/[0.06] dark:border-white/[0.08]">
           <div>
             <div className="flex items-center gap-3 flex-wrap">
-              <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 font-display transition-colors">
+              <h4 className="font-display text-xl sm:text-2xl font-bold text-neutral-900 dark:text-slate-50">
                 {exp.role}
               </h4>
               {exp.current && (
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-500/10 dark:bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 transition-colors">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                  Present
-                </span>
+                <Badge variant="emerald">Active Role</Badge>
               )}
             </div>
-            <p className="text-gray-500 dark:text-gray-400 text-sm mt-0.5 transition-colors">
-              {exp.company} • {exp.location}
-            </p>
+            <div className="flex items-center gap-3 text-xs sm:text-sm text-neutral-500 dark:text-slate-400 mt-1">
+              <span className="font-semibold text-neutral-700 dark:text-slate-300 flex items-center gap-1">
+                <Building2 className="w-3.5 h-3.5" />
+                {exp.company}
+              </span>
+              <span>•</span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5" />
+                {exp.location}
+              </span>
+            </div>
           </div>
         </div>
 
         {/* Responsibilities list */}
-        <ul className="mt-4 space-y-2.5 text-sm sm:text-base leading-relaxed text-gray-600 dark:text-gray-400 transition-colors">
+        <ul className="space-y-3 type-body-sm text-neutral-600 dark:text-slate-300">
           {exp.responsibilities.map((item, idx) => (
             <li key={idx} className="flex items-start gap-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-gray-400 dark:bg-gray-600 mt-2 shrink-0 group-hover:bg-black dark:group-hover:bg-white transition-colors" />
+              <CheckCircle2 className="w-4 h-4 text-violet-500 mt-0.5 shrink-0" />
               <span>{item}</span>
             </li>
           ))}
         </ul>
 
         {/* Technology & Tool Badges */}
-        <div className="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-100 dark:border-gray-800/70">
+        <div className="flex flex-wrap gap-2 mt-6 pt-4 border-t border-black/[0.06] dark:border-white/[0.08]">
           {exp.technologies.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 group-hover:border-gray-300 dark:group-hover:border-gray-700 transition-colors"
-            >
+            <Badge key={tech} variant="default" size="sm">
               {tech}
-            </span>
+            </Badge>
           ))}
         </div>
       </div>
@@ -55,25 +62,20 @@ export function Experience() {
   }));
 
   return (
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-8 border-t border-gray-100 dark:border-gray-800 pt-8 transition-colors"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-    >
-      {/* SECTION TITLE (LEFT) */}
-      <div className="md:col-span-3 pt-2">
-        <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 transition-colors">
-          Experience
-        </h3>
-      </div>
+    <section id="experience" className="py-24 md:py-32 transition-colors">
+      <Container>
+        <SectionHeading
+          eyebrow="Work History"
+          icon={<Briefcase className="w-4 h-4" />}
+          title="Professional Experience"
+          subtitle="Over 3.5 years of delivering high-quality UI/UX designs and collaborative frontend engineering."
+        />
 
-      {/* TIMELINE (RIGHT) */}
-      <div className="md:col-span-9">
-        <Timeline data={timelineData} />
-      </div>
-    </motion.div>
+        <div className="max-w-4xl mx-auto">
+          <Timeline data={timelineData} />
+        </div>
+      </Container>
+    </section>
   );
 }
 
