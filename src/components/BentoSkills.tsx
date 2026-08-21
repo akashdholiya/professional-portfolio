@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { BentoGrid } from "@/components/ui/BentoGrid";
 import { CardSpotlight } from "@/components/ui/CardSpotlight";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -13,7 +12,6 @@ import {
   Code2,
   Sparkles,
   Layers,
-  Palette,
   Workflow,
 } from "lucide-react";
 
@@ -22,7 +20,7 @@ export function BentoSkills() {
     <section id="skills" className="py-24 md:py-32 transition-colors">
       <Container>
         <SectionHeading
-          eyebrow="Core Capabilities & Stack"
+          eyebrow="Core Capabilities &amp; Stack"
           icon={<Sparkles className="w-4 h-4" />}
           title="Crafting Digital Products from Concept to Code"
           subtitle="A balanced blend of user experience strategy, design systems, and frontend implementation."
@@ -51,8 +49,9 @@ export function BentoSkills() {
                   "Wireframing",
                   "Information Architecture",
                   "User Journeys",
+                  "Interactive Prototyping",
                   "Usability Testing",
-                  "Heuristic Evaluation",
+                  "Design Systems",
                 ].map((item) => (
                   <Badge key={item} variant="default">
                     {item}
@@ -79,7 +78,7 @@ export function BentoSkills() {
                 Building scalable design tokens, multi-tier component libraries, auto layout systems, and variant architectures.
               </p>
               <div className="flex flex-wrap gap-1.5 pt-1">
-                {["Tokens", "Variants", "Auto Layout", "Variables", "UI Kits"].map((tag) => (
+                {["Tokens", "Variants", "Auto Layout", "Variables", "UI Kits", "Prototyping"].map((tag) => (
                   <Badge key={tag} variant="outline" size="sm">
                     {tag}
                   </Badge>
