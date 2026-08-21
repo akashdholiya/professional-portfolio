@@ -9,12 +9,12 @@ export default function JsonLd() {
         "alternateName": "Akash",
         "url": "https://akash-dholiya-protfolio.web.app",
         "image": "https://akash-dholiya-protfolio.web.app/Akash.jpg",
-        "jobTitle": "UI/UX & Web Designer",
+        "jobTitle": "UI/UX Designer & Web Designer",
         "worksFor": {
           "@type": "Organization",
           "name": "Freelance"
         },
-        "description": "Portfolio of Akash Dholiya — UI/UX & Web Designer specializing in Figma, web design and digital experiences.",
+        "description": "Akash Dholiya is a UI/UX and Web Designer specializing in modern digital experiences, responsive web design, Figma, design systems, and user-focused interfaces.",
         "email": "mailto:akashdholiya5570@gmail.com",
         "telephone": "+918866111829",
         "address": {
@@ -30,36 +30,34 @@ export default function JsonLd() {
           "UI/UX Design",
           "Figma",
           "Web Design",
-          "Frontend Development",
-          "React.js",
-          "Next.js",
-          "Angular",
+          "Product Design",
           "Design Systems",
-          "Responsive Web Design"
+          "Responsive Web Design",
+          "Wireframing",
+          "Prototyping",
+          "Frontend Architecture",
+          "React.js",
+          "Next.js"
         ]
       },
       {
-        "@type": "ProfilePage",
-        "@id": "https://akash-dholiya-protfolio.web.app/#profilepage",
-        "url": "https://akash-dholiya-protfolio.web.app",
-        "name": "Akash Dholiya | UI/UX & Web Designer",
-        "mainEntity": {
+        "@type": "WebSite",
+        "@id": "https://akash-dholiya-protfolio.web.app/#website",
+        "url": "https://akash-dholiya-protfolio.web.app/",
+        "name": "Akash Dholiya — UI/UX Designer & Web Designer",
+        "description": "Akash Dholiya is a UI/UX and Web Designer specializing in modern digital experiences, responsive web design, Figma, design systems, and user-focused interfaces.",
+        "publisher": {
           "@id": "https://akash-dholiya-protfolio.web.app/#person"
         },
-        "sameAs": [
-          "https://www.figma.com/@akashdholiya"
-        ]
+        "inLanguage": "en-US"
       }
     ]
-  }
+  };
 
   return (
-    <section>
-      {/* JSON-LD Schema for Google Search Engine */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </section>
-  )
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
