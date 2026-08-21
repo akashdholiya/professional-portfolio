@@ -79,7 +79,7 @@ export function CaseStudyModal({ project, isOpen, onClose }: CaseStudyModalProps
               <div className="relative w-full aspect-[16/10] rounded-[16px] overflow-hidden border border-black/[0.06] dark:border-white/[0.08] bg-neutral-100 dark:bg-[#101522]">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`${project.title} — ${project.category} case study visual presentation`}
                   fill
                   className="object-cover"
                   priority
