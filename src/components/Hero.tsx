@@ -73,7 +73,7 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35, ease: "easeOut" }}
           >
-            Designing thoughtful, modern and user-focused digital experiences with high fidelity and structural precision.
+            I design thoughtful, modern and user-focused digital experiences that balance usability, visual quality and business goals.
           </motion.p>
 
           {/* Action CTAs */}
@@ -130,7 +130,7 @@ export function Hero() {
                 3.5+
               </div>
               <div className="text-xs text-neutral-500 dark:text-slate-400 mt-0.5">
-                Years Design &amp; Dev Experience
+                Years Experience
               </div>
             </div>
             <div>
@@ -138,7 +138,7 @@ export function Hero() {
                 20+
               </div>
               <div className="text-xs text-neutral-500 dark:text-slate-400 mt-0.5">
-                Shipped UI &amp; Web Projects
+                Projects Shipped
               </div>
             </div>
             <div className="col-span-2 sm:col-span-1">
@@ -146,7 +146,7 @@ export function Hero() {
                 100%
               </div>
               <div className="text-xs text-neutral-500 dark:text-slate-400 mt-0.5">
-                User-Centric &amp; Pixel Precision
+                Design &amp; Prototype Fidelity
               </div>
             </div>
           </motion.div>
