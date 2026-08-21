@@ -63,6 +63,8 @@ export function ProjectList({
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-8">
           {displayedProjects.map((project, index) => {
+            const projectNumber = String(index + 1).padStart(2, "0");
+
             return (
               <motion.div
                 key={project.title + index}
@@ -83,14 +85,14 @@ export function ProjectList({
                       alt={project.title}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0B0F1A]/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
-                    {/* Category Pill floating on Image */}
+                    {/* Category Eyebrow floating on Image */}
                     <div className="absolute top-4 left-4 z-10">
-                      <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/60 dark:bg-[#0B0F1A]/80 backdrop-blur-md text-white border border-white/15">
-                        {project.category}
+                      <span className="px-3 py-1 rounded-full text-[11px] font-mono font-bold uppercase tracking-wider bg-black/65 dark:bg-[#0B0F1A]/85 backdrop-blur-md text-white border border-white/15">
+                        {projectNumber} · UI/UX · {project.category}
                       </span>
                     </div>
 
@@ -132,7 +134,7 @@ export function ProjectList({
                         <span>UI/UX Architecture</span>
                       </div>
                       <span className="font-mono font-semibold uppercase tracking-wider text-violet-500 dark:text-violet-400 group-hover:underline">
-                        Explore Details →
+                        View Case Study →
                       </span>
                     </div>
                   </div>
