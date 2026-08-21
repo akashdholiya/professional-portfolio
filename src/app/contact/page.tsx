@@ -43,10 +43,10 @@ export default function ContactPage() {
     setSubmitStatus("idle");
 
     try {
-      const SERVICE_ID = "service_iftiwzj";
-      const TEMPLATE_ID_ADMIN = "template_43b2syf";
-      const TEMPLATE_ID_USER = "template_fvgyt2j";
-      const PUBLIC_KEY = "au-n6sGG34U_NGtRo";
+      const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID || "";
+      const TEMPLATE_ID_ADMIN = process.env.NEXT_PUBLIC_TEMPLATE_ID_ADMIN || "";
+      const TEMPLATE_ID_USER = process.env.NEXT_PUBLIC_TEMPLATE_ID_USER || "";
+      const PUBLIC_KEY = process.env.NEXT_PUBLIC_PUBLIC_KEY || "";
 
       const fullName = `${data.firstName} ${data.lastName}`;
 
@@ -59,7 +59,7 @@ export default function ContactPage() {
           email: data.email,
           phone: data.phone,
           message: data.message,
-        },
+        },  
         PUBLIC_KEY
       );
 
