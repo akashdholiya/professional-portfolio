@@ -19,26 +19,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Akash Dholiya | UI/UX & Web Designer",
+    default: "Akash Dholiya — UI/UX Designer & Web Designer",
     template: "%s | Akash Dholiya",
   },
-  description: "Akash Dholiya is a UI/UX & Web Designer from Surat, Gujarat, specializing in Figma, web design, responsive interfaces, design systems and digital experiences.",
+  description:
+    "Akash Dholiya is a UI/UX and Web Designer specializing in modern digital experiences, responsive web design, Figma, design systems, and user-focused interfaces.",
   keywords: [
     "Akash Dholiya",
-    "Akash Dholiya Portfolio",
     "Akash Dholiya UI UX Designer",
-    "UI UX Designer in Surat",
-    "Web Designer in Surat",
-    "Figma Designer",
-    "UI UX Portfolio",
-    "Web Designer",
+    "Akash Dholiya Web Designer",
+    "UI UX Designer Surat",
+    "Web Designer Surat",
+    "Figma Designer Surat",
     "Product Designer",
-    "UX/UI Designer",
-    "Surat",
-    "Gujarat",
-    "India",
-    "Next.js Developer",
-    "React Developer",
+    "UI/UX Portfolio",
+    "Design Systems",
+    "Responsive Web Design",
+    "Prototyping",
+    "Frontend Collaboration",
   ],
   authors: [
     {
@@ -49,7 +47,7 @@ export const metadata: Metadata = {
   creator: "Akash Dholiya",
   publisher: "Akash Dholiya",
   alternates: {
-    canonical: "https://akash-dholiya-protfolio.web.app",
+    canonical: "https://akash-dholiya-protfolio.web.app/",
   },
   metadataBase: new URL("https://akash-dholiya-protfolio.web.app"),
   manifest: "/manifest.json",
@@ -59,25 +57,27 @@ export const metadata: Metadata = {
     shortcut: "/logo.jpg",
   },
   openGraph: {
-    title: "Akash Dholiya | UX/UI & Web Designer",
-    description: "Portfolio of Akash Dholiya — UI/UX & Web Designer specializing in Figma, web design and digital experiences.",
-    url: "https://akash-dholiya-protfolio.web.app",
+    title: "Akash Dholiya — UI/UX Designer & Web Designer",
+    description:
+      "Akash Dholiya is a UI/UX and Web Designer specializing in modern digital experiences, responsive web design, Figma, design systems, and user-focused interfaces.",
+    url: "https://akash-dholiya-protfolio.web.app/",
     siteName: "Akash Dholiya Portfolio",
     type: "website",
-    locale: "en_IN",
+    locale: "en_US",
     images: [
       {
         url: "/logo.jpg",
         width: 1200,
         height: 630,
-        alt: "Akash Dholiya — UI/UX & Web Designer",
+        alt: "Akash Dholiya — UI/UX & Web Designer Portfolio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Akash Dholiya | UX/UI & Web Designer",
-    description: "Portfolio of Akash Dholiya — UI/UX & Web Designer.",
+    title: "Akash Dholiya — UI/UX Designer & Web Designer",
+    description:
+      "Akash Dholiya is a UI/UX and Web Designer specializing in modern digital experiences, responsive web design, Figma, design systems, and user-focused interfaces.",
     images: ["/logo.jpg"],
     creator: "@akashdholiya",
   },
@@ -87,6 +87,9 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
 };
@@ -98,10 +101,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      {/* Root Layout */}
-      <body
-        className={`${syne.variable} ${inter.variable} antialiased`}
-      >
+      <body className={`${syne.variable} ${inter.variable} antialiased`}>
         <CustomCursor />
         <JsonLd />
         <ThemeProvider
