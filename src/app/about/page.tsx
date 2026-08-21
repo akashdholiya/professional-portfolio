@@ -1,186 +1,163 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import Experience from "@/components/Experience";
+import { Experience } from "@/components/Experience";
+import { BentoSkills } from "@/components/BentoSkills";
+import { Spotlight } from "@/components/ui/Spotlight";
+import { GridPattern } from "@/components/ui/GridPattern";
+import { Container } from "@/components/ui/Container";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Badge } from "@/components/ui/Badge";
+import { FileText, Sparkles, GraduationCap, MapPin, ArrowRight } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white font-sans selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-[#0B0F1A] text-neutral-900 dark:text-slate-100 font-sans selection:bg-violet-500 selection:text-white transition-colors duration-300">
       <Header />
 
-      <main className="pt-24 md:pt-32 max-w-7xl mx-auto px-6 sm:px-12 md:px-20">
+      <main className="pt-12 md:pt-16">
         {/* HERO SECTION */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center mb-12 md:mb-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="col-span-2"
-          >
-            <h1 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold leading-tight mb-6">
-              UX/UI Designer with a background in UI/UX & Web Design. <br />
-              Based in Surat, Gujarat, India.
-            </h1>
-          </motion.div>
-          <motion.div
-            className="relative flex justify-center md:justify-end"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className="relative w-[250px] h-[250px] md:w-[350px] md:h-[350px] rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl transition-all">
-              {/* Using logo.jpg as placeholder profile image or a gradient if preferable */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-orange-300 via-pink-400 to-purple-500 opacity-80 mix-blend-multiply"></div>
-              <Image
-                src="/Akash.jpg"
-                fill
-                alt="Akash Dholiya"
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-              />
+        <section className="relative py-6 md:py-12 mb-16 md:mb-24 overflow-hidden">
+          <Spotlight className="-top-30 left-10 md:left-40" fill="#7C3AED" />
+          <GridPattern showDots={true} />
+
+          <Container className="relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              {/* Left: Heading & Intro */}
+              <motion.div
+                initial={{ opacity: 0, y: 25 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="lg:col-span-7 space-y-6"
+              >
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-violet-500/10 dark:bg-violet-500/15 border border-violet-500/20 text-xs font-mono font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400">
+                  <Sparkles className="w-4 h-4" />
+                  <span>Designer Story</span>
+                </div>
+
+                <h1 className="type-h1 text-neutral-900 dark:text-slate-50 leading-[1.1]">
+                  Designing Thoughtful, Human-Centered Digital Products
+                </h1>
+
+                <div className="flex items-center gap-2 text-sm text-neutral-500 dark:text-slate-400 font-mono">
+                  <MapPin className="w-4 h-4 text-violet-500" />
+                  <span>Based in Surat, Gujarat, India • Available Globally</span>
+                </div>
+
+                <p className="type-body-lg text-neutral-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                  Starting out in visual design, I found myself drawn to understanding how people perceive and navigate interfaces. Over the last 3.5+ years, I’ve specialized in Figma, Design Systems, and frontend architectures to craft digital experiences that are intuitive, beautiful, and scalable.
+                </p>
+
+                <div className="pt-2 flex flex-wrap items-center gap-4">
+                  <a
+                    href="/Akash-CV.pdf"
+                    download
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 text-xs font-bold uppercase tracking-wider shadow-lg hover:scale-105 transition-transform"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span>Download Full Resume</span>
+                  </a>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-black/[0.08] dark:border-white/[0.12] text-xs font-bold uppercase tracking-wider hover:bg-neutral-100 dark:hover:bg-[#151B2A] transition-colors"
+                  >
+                    <span>Get In Touch</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+              </motion.div>
+
+              {/* Right: Portrait Image */}
+              <motion.div
+                className="lg:col-span-5 flex justify-center lg:justify-end"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
+                <div className="relative w-[280px] h-[280px] sm:w-[360px] sm:h-[360px] rounded-[24px] overflow-hidden border-2 border-black/[0.08] dark:border-white/[0.10] shadow-2xl">
+                  <Image
+                    src="/Akash.jpg"
+                    fill
+                    alt="Akash Dholiya"
+                    className="object-cover transition-all duration-500"
+                    priority
+                  />
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </Container>
         </section>
 
-        {/* BIO SECTION */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-8 border-t border-gray-100 dark:border-gray-800 pt-8 transition-colors"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="md:col-span-3 pt-1">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 transition-colors">
-              Bio
-            </h3>
-          </div>
-          <div className="md:col-span-9">
-            <p className="text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl transition-colors">
-              Starting out in graphic design, I always had a passion for
-              creating visually appealing work. But I wanted more than just
-              aesthetics—I wanted to understand how people interact with what I
-              create. That curiosity led me to UX design, where I've found the
-              perfect blend of creativity and problem-solving.
-            </p>
-            <p className="text-lg md:text-xl leading-relaxed text-gray-600 dark:text-gray-400 max-w-3xl mt-6 transition-colors">
-              Now, I design digital experiences that are not only beautiful but
-              also intuitive and user-focused. With over 3.5 years of experience
-              specializing in Figma, HTML, CSS & SCSS, Bootstrap, Tailwind CSS I transform concepts into
-              user-friendly interfaces.
-            </p>
-          </div>
-        </motion.div>
+        {/* BIO & PHILOSOPHY */}
+        <section className="py-16 border-t border-black/[0.06] dark:border-white/[0.08]">
+          <Container>
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+              <div className="md:col-span-4">
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-neutral-400 dark:text-slate-400">
+                  Philosophy
+                </span>
+                <h3 className="font-display text-2xl font-bold text-neutral-900 dark:text-slate-50 mt-2">
+                  Simplicity Meets Purpose
+                </h3>
+              </div>
+              <div className="md:col-span-8 space-y-4 type-body text-neutral-600 dark:text-slate-300 leading-relaxed">
+                <p>
+                  I believe great design is invisible. It solves user friction before it occurs, guides attention with deliberate hierarchy, and adheres to accessibility standards without sacrificing aesthetic excellence.
+                </p>
+                <p>
+                  Whether building a multi-tier design system in Figma or structuring front-end components in React and Next.js, my focus remains constant: delivering delightful, measurable outcomes.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </section>
 
-        {/* SKILLS SECTION */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-8 border-t border-gray-100 dark:border-gray-800 pt-8 transition-colors"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-        >
-          <div className="md:col-span-3">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 transition-colors">
-              Skills
-            </h3>
-          </div>
-          <div className="md:col-span-9 grid grid-cols-1 sm:grid-cols-2 gap-x-20 gap-y-10">
-            <div>
-              <h4 className="font-display text-lg font-bold mb-6 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2 transition-colors">
-                Design & Tools
-              </h4>
-              <ul className="space-y-3 sm:space-y-4 text-gray-500 dark:text-gray-400 transition-colors">
-                <li>Figma (Wireframing & Prototyping)</li>
-                <li>User Interface (UI) Design</li>
-                <li>User Experience (UX) Design</li>
-                <li>Responsive Design</li>
-                <li>Website Optimization</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-display text-lg font-bold mb-6 text-gray-900 dark:text-gray-100 border-b border-gray-200 dark:border-gray-800 pb-2 transition-colors">
-                Development
-              </h4>
-              <ul className="space-y-3 sm:space-y-4 text-gray-500 dark:text-gray-400 transition-colors">
-                <li>HTML5, CSS3, SCSS, LESS</li>
-                <li>Tailwind CSS, Bootstrap</li>
-                <li>JavaScript (ES6+)</li>
-                <li>Angular framework</li>
-                <li>React JS & Next.js</li>
-                <li>React Native (Mobile)</li>
-              </ul>
-            </div>
-          </div>
-        </motion.div>
+        {/* SKILLS BENTO GRID */}
+        <BentoSkills />
 
         {/* EDUCATION SECTION */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-8 border-t border-gray-100 dark:border-gray-800 pt-8 transition-colors"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="md:col-span-3 pt-4">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 dark:text-gray-500 transition-colors">
-              Education
-            </h3>
-          </div>
-          <div className="md:col-span-9 space-y-6">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 border-b border-gray-100 dark:border-gray-800 group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4 rounded-lg">
-              <div>
-                <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors">
-                  Graphic & Web Designing Certification
-                </h4>
-                <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors">
-                  Creative Design & Multimedia Institute (CDMI)
-                </p>
-              </div>
-              <span className="text-gray-400 dark:text-gray-500 text-sm font-mono mt-2 sm:mt-0 transition-colors">
-                2022
-              </span>
-            </div>
+        <section className="py-20 border-t border-black/[0.06] dark:border-white/[0.08]">
+          <Container>
+            <SectionHeading
+              eyebrow="Academic Background"
+              icon={<GraduationCap className="w-4 h-4" />}
+              title="Education &amp; Certifications"
+            />
 
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-4 border-b border-gray-100 dark:border-gray-800 group hover:bg-gray-50 dark:hover:bg-white/5 transition-colors px-4 -mx-4 rounded-lg">
-              <div>
-                <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 transition-colors">
-                  Bachelor of Commerce
-                </h4>
-                <p className="text-gray-500 dark:text-gray-400 text-sm transition-colors">
-                  RV Patel College of Commerce
-                </p>
+            <div className="max-w-3xl mx-auto space-y-4">
+              <div className="p-6 rounded-[20px] bg-neutral-50 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h4 className="font-display text-lg font-bold text-neutral-900 dark:text-slate-50">
+                    Graphic &amp; Web Designing Certification
+                  </h4>
+                  <p className="type-body-sm text-neutral-500 dark:text-slate-400 mt-1">
+                    Creative Design &amp; Multimedia Institute (CDMI)
+                  </p>
+                </div>
+                <Badge variant="outline">2022</Badge>
               </div>
-              <span className="text-gray-400 dark:text-gray-500 text-sm font-mono mt-2 sm:mt-0 transition-colors">
-                2018 - 2020
-              </span>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* EXPERIENCE SECTION */}
+              <div className="p-6 rounded-[20px] bg-neutral-50 dark:bg-[#151B2A] border border-black/[0.08] dark:border-white/[0.08] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                  <h4 className="font-display text-lg font-bold text-neutral-900 dark:text-slate-50">
+                    Bachelor of Commerce (B.Com)
+                  </h4>
+                  <p className="type-body-sm text-neutral-500 dark:text-slate-400 mt-1">
+                    RV Patel College of Commerce
+                  </p>
+                </div>
+                <Badge variant="outline">2018 — 2020</Badge>
+              </div>
+            </div>
+          </Container>
+        </section>
+
+        {/* EXPERIENCE TIMELINE */}
         <Experience />
-
-        {/* DOWNLOAD CV CTA */}
-        <motion.div
-          className="flex justify-start md:justify-center pb-10"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <a
-            href="/Akash-CV.pdf"
-            download
-            className="group relative inline-flex items-center gap-4 px-8 py-3.5 bg-black dark:bg-white text-white dark:text-black rounded-full overflow-hidden transition-all hover:scale-105 shadow-xl"
-          >
-            <span className="relative z-10 text-sm font-bold uppercase tracking-widest">
-              Download CV
-            </span>
-            <div className="w-2 h-2 bg-white dark:bg-black rounded-full group-hover:bg-orange-400 transition-colors"></div>
-          </a>
-        </motion.div>
       </main>
 
       <Footer />
