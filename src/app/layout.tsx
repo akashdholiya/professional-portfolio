@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import JsonLd from "@/components/JsonLd";
 import { CustomCursor } from "@/components/ui/CustomCursor";
+import { PreloaderProvider } from "@/components/3d/PreloaderProvider";
 
 const syne = Syne({
   variable: "--font-syne",
@@ -110,7 +111,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <PreloaderProvider>
+            {children}
+          </PreloaderProvider>
         </ThemeProvider>
       </body>
     </html>

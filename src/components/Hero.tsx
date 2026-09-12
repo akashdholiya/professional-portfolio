@@ -7,6 +7,7 @@ import { Spotlight } from "@/components/ui/Spotlight";
 import { GridPattern } from "@/components/ui/GridPattern";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ArrowDown, ArrowUpRight, FileText, Send, Sparkles } from "lucide-react";
+import { getExperienceStats } from "@/lib/experience";
 
 export function Hero() {
   return (
@@ -127,7 +128,7 @@ export function Hero() {
           >
             <div>
               <div className="font-display text-2xl sm:text-3xl font-bold text-neutral-900 dark:text-slate-50">
-                3.5+
+                {getExperienceStats().displayYears}
               </div>
               <div className="text-xs text-neutral-500 dark:text-slate-400 mt-0.5">
                 Years Experience
@@ -152,7 +153,7 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
 
