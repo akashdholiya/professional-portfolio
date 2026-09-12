@@ -8,6 +8,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Briefcase, Building2, MapPin, CheckCircle2 } from "lucide-react";
+import { getExperienceStats } from "@/lib/experience";
 
 export function Experience() {
   const timelineData: TimelineEntry[] = experiences.map((exp) => ({
@@ -68,7 +69,7 @@ export function Experience() {
           eyebrow="Work History"
           icon={<Briefcase className="w-4 h-4" />}
           title="Professional Experience"
-          subtitle="Over 3.5 years of delivering high-quality UI/UX designs and collaborative frontend engineering."
+          subtitle={getExperienceStats().subtitleText}
         />
 
         <div className="max-w-4xl mx-auto">

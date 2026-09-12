@@ -13,6 +13,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { FileText, Sparkles, GraduationCap, MapPin, ArrowRight } from "lucide-react";
+import { getExperienceStats } from "@/lib/experience";
 
 export function AboutClient() {
   return (
@@ -49,7 +50,7 @@ export function AboutClient() {
                 </div>
 
                 <p className="type-body-lg text-neutral-600 dark:text-slate-300 leading-relaxed max-w-2xl">
-                  Starting out in visual design, I found myself drawn to understanding how people perceive and navigate interfaces. Over the last 3.5+ years, I’ve specialized in Figma, Design Systems, and frontend architectures to craft digital experiences that are intuitive, beautiful, and scalable.
+                  {getExperienceStats().storyBioText}
                 </p>
 
                 <div className="pt-2 flex flex-wrap items-center gap-4">

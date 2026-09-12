@@ -8,6 +8,7 @@ import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { ArrowRight, Sparkles, Compass } from "lucide-react";
+import { getExperienceStats } from "@/lib/experience";
 
 const keyExpertise = [
   "UI/UX Design",
@@ -44,7 +45,7 @@ export function AboutSection() {
             </h2>
 
             <p className="type-body-lg text-neutral-600 dark:text-slate-300 leading-relaxed">
-              With over 3.5 years of hands-on experience across UI/UX design and frontend development, I specialize in crafting clean, high-impact interfaces in Figma and translating them into robust, responsive digital products.
+              {getExperienceStats().aboutBioText}
             </p>
 
             <p className="type-body text-neutral-600 dark:text-slate-400 leading-relaxed">
